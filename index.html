@@ -505,14 +505,18 @@
           document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
               title: 'Apakah pengaduan terkait korupsi?',
-              text: 'Jika tidak, silakan sampaikan aspirasi atau keluhan lainnya melalui platform resmi Pemerintah Kota Bekasi di:',
-              html: '<a href="https://x.com/pemkotbekasi" target="_blank">https://x.com/pemkotbekasi</a>',
-              icon: 'info',
-              confirmButtonText: 'OK'
+              icon: 'question',
+              showCancelButton: true,
+              confirmButtonText: 'Ya',
+              cancelButtonText: 'Tidak, ke Twitter'
+            }).then((result) => {
+              if (result.dismiss === Swal.DismissReason.cancel) {
+                window.location.href = 'https://x.com/pemkotbekasi';
+              }
             });
           });
         </script>
 
-        
+
     </body>
 </html>
