@@ -10,51 +10,7 @@
     <link rel="stylesheet" href="css/tailwind/tailwind.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="shuffle-for-tailwind.png">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
-    <script type="text/javascript">
-         let currentStep = 1;
-    const totalSteps = 4;
 
-    const steps = document.querySelectorAll('.step');
-    const contents = document.querySelectorAll('.step-content');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-
-    function updateUI() {
-      steps.forEach((step, i) => {
-        const circle = step.querySelector('.circle');
-        if (i < currentStep) {
-          circle.classList.remove('bg-gray-300', 'text-gray-700');
-          circle.classList.add('bg-green-500', 'text-white');
-        } else {
-          circle.classList.add('bg-gray-300', 'text-gray-700');
-          circle.classList.remove('bg-green-500', 'text-white');
-        }
-      });
-
-      contents.forEach((content, i) => {
-        content.classList.toggle('hidden', i + 1 !== currentStep);
-      });
-
-      prevBtn.disabled = currentStep === 1;
-      nextBtn.innerText = currentStep === totalSteps ? 'Selesai' : 'Selanjutnya';
-    }
-
-    nextBtn.addEventListener('click', () => {
-      if (currentStep < totalSteps) {
-        currentStep++;
-        updateUI();
-      }
-    });
-
-    prevBtn.addEventListener('click', () => {
-      if (currentStep > 1) {
-        currentStep--;
-        updateUI();
-      }
-    });
-
-    updateUI();
-    </script>
 </head>
 <body class="antialiased bg-body text-body font-body">
     <div class="">
@@ -193,6 +149,52 @@
         </div>
       </section>
     </div>
+
+    <script type="text/javascript">
+      let currentStep = 1;
+ const totalSteps = 4;
+
+ const steps = document.querySelectorAll('.step');
+ const contents = document.querySelectorAll('.step-content');
+ const nextBtn = document.getElementById('nextBtn');
+ const prevBtn = document.getElementById('prevBtn');
+
+ function updateUI() {
+   steps.forEach((step, i) => {
+     const circle = step.querySelector('.circle');
+     if (i < currentStep) {
+       circle.classList.remove('bg-gray-300', 'text-gray-700');
+       circle.classList.add('bg-green-500', 'text-white');
+     } else {
+       circle.classList.add('bg-gray-300', 'text-gray-700');
+       circle.classList.remove('bg-green-500', 'text-white');
+     }
+   });
+
+   contents.forEach((content, i) => {
+     content.classList.toggle('hidden', i + 1 !== currentStep);
+   });
+
+   prevBtn.disabled = currentStep === 1;
+   nextBtn.innerText = currentStep === totalSteps ? 'Selesai' : 'Selanjutnya';
+ }
+
+ nextBtn.addEventListener('click', () => {
+   if (currentStep < totalSteps) {
+     currentStep++;
+     updateUI();
+   }
+ });
+
+ prevBtn.addEventListener('click', () => {
+   if (currentStep > 1) {
+     currentStep--;
+     updateUI();
+   }
+ });
+
+ updateUI();
+ </script>
 </body>
 </html>
 

@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/tailwind/tailwind.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="shuffle-for-tailwind.png">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body class="antialiased bg-body text-body font-body">
     <div class="">
@@ -108,9 +110,9 @@
         <p class="text-center text-gray-600 mb-10">Mohon isi formulir berikut dengan informasi selengkap-lengkapnya. Identitas Anda dapat dirahasiakan.</p>
         <form action="http://localhost:3000/submit" method="POST" enctype="multipart/form-data" class="bg-white p-8 rounded-xl shadow-md space-y-6">
            
-          <!-- Informasi Pelapor (hanya tampil jika tidak anonim) -->
+          <!-- Detail Pelapor (hanya tampil jika tidak anonim) -->
           <div class="border-t pt-6">
-            <h2 class="text-xl font-bold mb-4">Informasi Pelapor</h2>
+            <h2 class="text-xl font-bold mb-4">Detail Pelapor</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
    
                             
@@ -132,7 +134,7 @@
           </div>
           <!-- Informasi Pelanggaran -->
           <div class="border-t pt-6">
-            <h2 class="text-xl font-bold mb-4">Informasi Pelanggaran</h2>
+            <h2 class="text-xl font-bold mb-4">Detail Laporan</h2>
             <div class="mb-4">
               <label class="block mb-2 text-gray-900 font-semibold">Jenis Pelanggaran</label>
               <select class="p-3 w-full font-medium text-gray-500 bg-white border border-gray-200 rounded-lg focus:ring focus:ring-indigo-300">
@@ -166,7 +168,7 @@
           </div>
           <!-- Pihak yang Terlibat -->
           <div class="border-t pt-6">
-            <h2 class="text-xl font-bold mb-4">Pihak yang Terlibat</h2>
+            <h2 class="text-xl font-bold mb-4">Detail Terlapor</h2>
             <!-- <div class="mb-4">
               <label class="block mb-2 text-gray-900 font-semibold">Nama Pelaku/Pihak yang Terlibat</label>
               <input type="text" class="p-3 w-full font-medium text-gray-500 bg-white border border-gray-200 rounded-lg focus:ring focus:ring-indigo-300" placeholder="Masukkan nama pelaku/pihak yang terlibat"/>
@@ -261,7 +263,7 @@
           </div>
           <!-- Tombol Submit -->
           <div class="pt-4">
-            <button class="py-4 px-6 w-full text-white font-semibold border border-indigo-700 rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200" type="submit">Kirim Laporan</button>
+            <button class="py-4 px-6 w-full text-white font-semibold border border-indigo-700 rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200" type="submit" disabled>Kirim Laporan</button>
             <p class="text-sm text-center text-gray-500 mt-4">Terima kasih atas kepedulian Anda dalam membantu kami menciptakan lingkungan yang berintegritas.</p>
           </div>
         </form>
@@ -321,6 +323,28 @@
         </div>
       </section>
     </div>
+
+
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+          title: 'Apakah Anda Pegawai Pemkot Bekasi?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Ya',
+          cancelButtonText: 'Tidak'
+        }).then((result) => {
+          if (result.dismiss === Swal.DismissReason.cancel) {
+            window.location.href = 'https://x.com/pemkotbekasi';
+
+            //jika pegawai pake nip jika bukan input manual nama, nik, email, tlp  
+          }
+        });
+      });
+    </script>
+
+
 </body>
 </html>
 
